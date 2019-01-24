@@ -11,7 +11,9 @@ Steps:
 - Create RecyclerView Adapter and View Holder ✅
 - Set Adapter and LayoutManager in RecyclerView ✅
 
-## Read Currencies from local JSON file
+## Read Currencies from local JSON file using MOSHI
+- add dependency to Moshi in gradle file
+- try to use the `nullSafe()` method from the library
 
 ## Write UI Tests for recycler view
 - test 1st element is visible
@@ -22,4 +24,9 @@ Steps:
 - Use SearchView component
 
 ## Use Koin as DependencyInjection framework
+
+## Use retrofit to obtain data from a Remote Repository (GitHub/Marvel)
+
+## Implement a Logger using OkHttpInterceptor
+- this can be implemented in a separate module.
 
