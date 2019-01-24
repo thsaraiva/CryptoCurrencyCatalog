@@ -11,8 +11,15 @@ Steps:
 - Create RecyclerView Adapter and View Holder ✅
 - Set Adapter and LayoutManager in RecyclerView ✅
 
+## Read Currencies from local JSON file
 
+## Write UI Tests for recycler view
+- test 1st element is visible
+- test element that is hidden is visible after scrolling
 
+## Search Specific Currency
+- Search icon on ActionBar
+- Use SearchView component
 
-
+## Use Koin as DependencyInjection framework
 
