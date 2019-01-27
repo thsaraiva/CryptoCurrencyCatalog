@@ -6,8 +6,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.example.tsaraiva.cryptocurrencycatalog.R
 import com.example.tsaraiva.cryptocurrencycatalog.model.Currency
+import com.example.tsaraiva.cryptocurrencycatalog.ui.utils.CurrencyJSONConverter
 
 class MainActivity : AppCompatActivity() {
+
+    private val converter: CurrencyJSONConverter = CurrencyJSONConverter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,16 +19,14 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.currencies_list)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = CurrenciesAdapter(generateDummyCurrencyData(100))
+        recyclerView.adapter = CurrenciesAdapter(getCurrencyDataFromLocalJSONFile() ?: listOf())
     }
 
-    private fun generateDummyCurrencyData(itemsNumber: Int): List<Currency> {
-        with(mutableListOf<Currency>()) {
-            for (id in 1..itemsNumber) {
-                add(Currency(id, "Item_$id", "$", "slug"))
-            }
-            return this
-        }
+    private fun getCurrencyDataFromLocalJSONFile(): List<Currency>? {
+        val inputStream = resources.openRawResource(R.raw.currencies)
+        val bufferedReader = inputStream.bufferedReader()
+        val jsonFile = bufferedReader.use { it.readText() }
+        return converter.convertListFromJSON(jsonFile)
     }
 }
 
