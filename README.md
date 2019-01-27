@@ -13,6 +13,14 @@ Steps:
 
 ## Read Currencies from local JSON file using MOSHI
 - add dependency to Moshi in gradle file
+- create JSONConverter class with methods that convert
+    - JSON -> Currency;
+    - Currency -> JSON;
+    - List\<Currency\> -> JSON
+    - JSON -> List\<Currency\>
+- create JSON file in res/Raw folder with list of currencies
+- Inside activity, change helper method to read JSON file and create JSON string
+- Use JSONConverter to obtain list of currencies and pass to adapter
 - try to use the `nullSafe()` method from the library
 
 ## Write UI Tests for recycler view
