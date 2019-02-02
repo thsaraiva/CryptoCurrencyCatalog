@@ -1,11 +1,10 @@
 package com.example.tsaraiva.cryptocurrencycatalog.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.support.v4.view.MenuItemCompat
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.SearchView
-import android.support.v7.widget.Toolbar
+import android.support.v7.widget.*
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -50,9 +49,17 @@ class MainActivity : AppCompatActivity() {
         })
 
         // Configure the search info and add any event listeners...
-        val searchView = searchMenuItem?.actionView as SearchView
+        val searchView = searchMenuItem.actionView as SearchView
         searchView.queryHint = "Search for crypto..."
 
+        val shareMenuItem: MenuItem? = menu.findItem(R.id.action_share)
+        val shareActionProvider = MenuItemCompat.getActionProvider(shareMenuItem) as ShareActionProvider
+        with(Intent(Intent.ACTION_SEND)) {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, "Subject Here")
+            putExtra(Intent.EXTRA_TEXT, "Message")
+            shareActionProvider.setShareIntent(this)
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
