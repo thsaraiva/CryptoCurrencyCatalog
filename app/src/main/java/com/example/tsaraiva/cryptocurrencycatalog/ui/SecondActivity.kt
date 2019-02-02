@@ -14,6 +14,9 @@ class SecondActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.my_toolbar))
         supportActionBar?.title = "Second Activity"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_ios_24dp)
+
 
     }
 
