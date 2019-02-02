@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import com.example.tsaraiva.cryptocurrencycatalog.R
 import com.example.tsaraiva.cryptocurrencycatalog.model.Currency
@@ -41,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         return when (item?.itemId) {
             R.id.action_search -> {
                 Toast.makeText(this, "Search Action!", Toast.LENGTH_SHORT).show()
+                startActivity(SecondActivity.getIntent(this))
                 true
             }
             R.id.action_filter -> {
